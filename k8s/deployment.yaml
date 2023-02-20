@@ -1,0 +1,22 @@
+apiVersion: serving.knative.dev/v1
+kind: Configuration
+metadata:
+  name: vote-ui
+  labels:
+    app: vote-ui
+spec:
+  template:
+    metadata:
+      labels:
+        app: vote-ui
+    spec:
+      containers:
+        - image: quay.io/sumitbiswal/argocd-python:latest
+          imagePullPolicy: Always
+          name: vote-ui
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+            - containerPort: 9090
+              protocol: TCP
+      
