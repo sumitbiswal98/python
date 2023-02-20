@@ -1,0 +1,14 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: vote-ui
+  labels:
+    app: vote-ui
+spec:
+  template:
+    metadata:
+      labels:
+        app: vote-ui
+    spec:
+      selector:
+        app: vote-ui
