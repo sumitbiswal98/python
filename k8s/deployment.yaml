@@ -1,10 +1,14 @@
-apiVersion: serving.knative.dev/v1
-kind: Configuration
+apiVersion: apps/v1
+kind: Deployment
 metadata:
-  name: vote-ui
   labels:
     app: vote-ui
+  name: vote-ui
 spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: vote-ui
   template:
     metadata:
       labels:
@@ -24,4 +28,3 @@ spec:
               value: vote-api
             - name: VOTING_API_SERVICE_PORT
               value: "9000"
-      
